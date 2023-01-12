@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">CountriesApp</string>
 
+    <string name="name">Name:</string>
+    <string name="region">Region:</string>
+    <string name="capital">Capital:</string>
+    <string name="currency">Currency:</string>
+    <string name="time_zone">Time Zone:</string>
+
     <!--CONTENT DESCRIPTION-->
     <string name="cd_icon_country">Icon country</string>
+
 
 </resources>
