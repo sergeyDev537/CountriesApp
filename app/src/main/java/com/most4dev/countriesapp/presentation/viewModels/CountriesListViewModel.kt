@@ -19,10 +19,24 @@ class CountriesListViewModel : ViewModel() {
     val listCountry: LiveData<List<CountriesShort>>
         get() = _listCountry
 
+    private var _errorLoadData = MutableLiveData<String>()
+    val errorLoadData: LiveData<String>
+        get() = _errorLoadData
+
+
+
     fun getListCountries(){
         viewModelScope.launch {
-            _listCountry.value = getCountriesListUseCase.invoke()
+            try {
+                _listCountry.value = getCountriesListUseCase.invoke()
+            }catch (e: Exception){
+                _errorLoadData.value = e.message
+            }
         }
+    }
+
+    fun clearErrorLoadList(){
+        _errorLoadData.value = ""
     }
 
 }

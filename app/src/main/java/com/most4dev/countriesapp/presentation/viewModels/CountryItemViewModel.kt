@@ -19,9 +19,17 @@ class CountryItemViewModel: ViewModel() {
     val itemCountry: LiveData<CountriesLong>
         get() = _itemCountry
 
+    private var _errorLoadItem = MutableLiveData<String>()
+    val errorLoadItem: LiveData<String>
+        get() = _errorLoadItem
+
     fun getItemCountry(name: String){
         viewModelScope.launch {
-            _itemCountry.value = getCountryUseCase.invoke(name)
+            try {
+                _itemCountry.value = getCountryUseCase.invoke(name)
+            }catch (e: Exception){
+                _errorLoadItem.value = e.message
+            }
         }
     }
 
