@@ -12,6 +12,7 @@
 
     <!--CONTENT DESCRIPTION-->
     <string name="cd_icon_country">Icon country</string>
+    <string name="cd_update">Update</string>
 
 
 </resources>

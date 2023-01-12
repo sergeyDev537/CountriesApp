@@ -36,10 +36,21 @@ class CountriesListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        visibleProgressBar(true)
         setUpAdapter()
         setObserve()
+        setClick()
+        loadList()
+    }
+
+    private fun loadList() {
+        visibleProgressBar(true)
         countriesViewModel.getListCountries()
+    }
+
+    private fun setClick() {
+        binding.fabRefresh.setOnClickListener {
+            loadList()
+        }
     }
 
     private fun visibleProgressBar(boolean: Boolean){
