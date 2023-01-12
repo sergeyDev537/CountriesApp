@@ -32,7 +32,7 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="0.1"
-                app:loadIcon="@{countryItem.flags.svg}"
+                app:loadIcon="@{countryItem.flags.png}"
                 android:contentDescription="@string/cd_icon_country"
                 tools:src="@drawable/ic_launcher_foreground" />
 

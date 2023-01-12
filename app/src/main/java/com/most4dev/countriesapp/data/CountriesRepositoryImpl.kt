@@ -13,7 +13,7 @@ object CountriesRepositoryImpl: CountriesListRepository {
         return apiInterface.getShortFieldsList().body() ?: arrayListOf()
     }
 
-    override suspend fun getCountry(name: String): CountriesLong {
-        return apiInterface.getLongFieldsItem(name)
+    override suspend fun getCountry(name: String): CountriesLong? {
+        return apiInterface.getLongFieldsItem(name).body()?.get(0)
     }
 }

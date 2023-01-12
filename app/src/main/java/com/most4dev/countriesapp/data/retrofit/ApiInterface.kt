@@ -14,6 +14,6 @@ interface ApiInterface {
     @GET("name/{name}?fields=name,flags,region,capital,currencies,timezones")
     suspend fun getLongFieldsItem(
         @Path("name") name: String
-    ): CountriesLong
+    ): Response<List<CountriesLong>>
 
 }

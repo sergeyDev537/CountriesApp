@@ -7,6 +7,6 @@ interface CountriesListRepository {
 
     suspend fun getCountriesList(): List<CountriesShort>
 
-    suspend fun getCountry(name: String): CountriesLong
+    suspend fun getCountry(name: String): CountriesLong?
 
 }
