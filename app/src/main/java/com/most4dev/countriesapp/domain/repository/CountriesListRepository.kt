@@ -1,13 +1,12 @@
 package com.most4dev.countriesapp.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.most4dev.countriesapp.domain.entity.CountriesLong
 import com.most4dev.countriesapp.domain.entity.CountriesShort
 
 interface CountriesListRepository {
 
-    fun getCountriesList(): LiveData<List<CountriesShort>>
+    suspend fun getCountriesList(): List<CountriesShort>
 
-    fun getCountry(name: String): CountriesLong
+    suspend fun getCountry(name: String): CountriesLong
 
 }
