@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.most4dev.countriesapp.databinding.FragmentCountryItemBinding
+import com.most4dev.countriesapp.presentation.utils.showSnackBar
 import com.most4dev.countriesapp.presentation.viewModels.CountryItemViewModel
 
 class CountryItemFragment : Fragment() {
@@ -33,9 +34,16 @@ class CountryItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         visibleLoadProgress(true)
         countryItemViewModel.getItemCountry(args.countryName)
-        countryItemViewModel.itemCountry.observe(viewLifecycleOwner){
+        setObserver()
+    }
+
+    private fun setObserver() {
+        countryItemViewModel.itemCountry.observe(viewLifecycleOwner) {
             binding.country = it
             visibleLoadProgress(false)
+        }
+        countryItemViewModel.errorLoadItem.observe(viewLifecycleOwner){
+            binding.root.showSnackBar(it)
         }
     }
 

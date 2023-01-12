@@ -7,6 +7,9 @@
     <string name="currency">Currency:</string>
     <string name="time_zone">Time Zone:</string>
 
+    <!--ERROR-->
+    <string name="error_connect">Check internet connection</string>
+
     <!--CONTENT DESCRIPTION-->
     <string name="cd_icon_country">Icon country</string>
 

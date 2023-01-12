@@ -1,6 +1,7 @@
 package com.most4dev.countriesapp.presentation.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.most4dev.countriesapp.databinding.FragmentCountriesListBinding
 import com.most4dev.countriesapp.domain.entity.CountriesShort
 import com.most4dev.countriesapp.presentation.adapters.CountriesListAdapter
+import com.most4dev.countriesapp.presentation.utils.showSnackBar
 import com.most4dev.countriesapp.presentation.viewModels.CountriesListViewModel
 
 class CountriesListFragment : Fragment() {
@@ -23,7 +25,6 @@ class CountriesListFragment : Fragment() {
     private val countriesViewModel by lazy {
         ViewModelProvider(this)[CountriesListViewModel::class.java]
     }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +76,11 @@ class CountriesListFragment : Fragment() {
     private fun setObserve() {
         countriesViewModel.listCountry.observe(viewLifecycleOwner) {
             countriesListAdapter.submitList(it)
+            countriesViewModel.clearErrorLoadList()
             visibleProgressBar(false)
+        }
+        countriesViewModel.errorLoadData.observe(viewLifecycleOwner){
+            binding.root.showSnackBar(it)
         }
     }
 

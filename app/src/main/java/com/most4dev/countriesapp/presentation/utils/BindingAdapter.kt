@@ -1,4 +1,4 @@
-package com.most4dev.countriesapp.presentation
+package com.most4dev.countriesapp.presentation.utils
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
