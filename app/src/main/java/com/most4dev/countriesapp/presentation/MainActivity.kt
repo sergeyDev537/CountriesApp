@@ -1,7 +1,8 @@
-package com.most4dev.countriesapp
+package com.most4dev.countriesapp.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.most4dev.countriesapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
