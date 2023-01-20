@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.most4dev.countriesapp.databinding.FragmentCountryItemBinding
 import com.most4dev.countriesapp.presentation.utils.showSnackBar
-import com.most4dev.countriesapp.presentation.viewModels.CountryItemViewModel
+import com.most4dev.countriesapp.presentation.viewModels.CountriesListViewModel
 
 class CountryItemFragment : Fragment() {
 
@@ -18,9 +18,7 @@ class CountryItemFragment : Fragment() {
     private val binding: FragmentCountryItemBinding
         get() = _binding ?: throw RuntimeException("FragmentCountryItemBinding is null")
 
-    private val countryItemViewModel by lazy {
-        ViewModelProvider(this)[CountryItemViewModel::class.java]
-    }
+    private val countriesViewModel: CountriesListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,16 +31,16 @@ class CountryItemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         visibleLoadProgress(true)
-        countryItemViewModel.getItemCountry(args.countryName)
+        countriesViewModel.getItemCountry(args.countryName)
         setObserver()
     }
 
     private fun setObserver() {
-        countryItemViewModel.itemCountry.observe(viewLifecycleOwner) {
+        countriesViewModel.itemCountry.observe(viewLifecycleOwner) {
             binding.country = it
             visibleLoadProgress(false)
         }
-        countryItemViewModel.errorLoadItem.observe(viewLifecycleOwner){
+        countriesViewModel.errorLoadItem.observe(viewLifecycleOwner){
             binding.root.showSnackBar(it)
         }
     }

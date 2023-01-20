@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.most4dev.countriesapp.databinding.ItemCountryBinding
-import com.most4dev.countriesapp.domain.entity.CountriesShort
+import com.most4dev.countriesapp.domain.entity.CountriesLong
 
-class CountriesListAdapter: ListAdapter<CountriesShort, CountriesViewHolder>(CountriesDiffCallback()) {
+class CountriesListAdapter: ListAdapter<CountriesLong, CountriesViewHolder>(CountriesDiffCallback()) {
 
-    var onCountryItemClickListener: ((CountriesShort) -> Unit)? = null
+    var onCountryItemClickListener: ((CountriesLong) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountriesViewHolder {
         val binding = ItemCountryBinding.inflate(
