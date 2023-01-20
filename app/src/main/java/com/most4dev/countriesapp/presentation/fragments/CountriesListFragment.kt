@@ -1,15 +1,14 @@
 package com.most4dev.countriesapp.presentation.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.most4dev.countriesapp.databinding.FragmentCountriesListBinding
-import com.most4dev.countriesapp.domain.entity.CountriesShort
+import com.most4dev.countriesapp.domain.entity.CountriesLong
 import com.most4dev.countriesapp.presentation.adapters.CountriesListAdapter
 import com.most4dev.countriesapp.presentation.utils.showSnackBar
 import com.most4dev.countriesapp.presentation.viewModels.CountriesListViewModel
@@ -22,9 +21,7 @@ class CountriesListFragment : Fragment() {
     private val binding: FragmentCountriesListBinding
         get() = _binding ?: throw RuntimeException("FragmentCountriesListBinding is null")
 
-    private val countriesViewModel by lazy {
-        ViewModelProvider(this)[CountriesListViewModel::class.java]
-    }
+    private val countriesViewModel:CountriesListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +36,8 @@ class CountriesListFragment : Fragment() {
         setUpAdapter()
         setObserve()
         setClick()
-        loadList()
+        visibleProgressBar(true)
+        //loadList()
     }
 
     private fun loadList() {
@@ -76,10 +74,10 @@ class CountriesListFragment : Fragment() {
         }
     }
 
-    private fun launchCountryItemFragment(countriesShort: CountriesShort) {
+    private fun launchCountryItemFragment(countriesLong: CountriesLong) {
         findNavController().navigate(
             CountriesListFragmentDirections.actionCountriesListFragmentToCountryItemFragment(
-                countriesShort.name
+                countriesLong.name
             )
         )
     }

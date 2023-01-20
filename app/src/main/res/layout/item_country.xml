@@ -3,7 +3,7 @@
     <data>
         <variable
             name="countryItem"
-            type="com.most4dev.countriesapp.domain.entity.CountriesShort" />
+            type="com.most4dev.countriesapp.domain.entity.CountriesLong" />
     </data>
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
