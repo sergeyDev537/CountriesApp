@@ -1,12 +1,11 @@
 package com.most4dev.countriesapp.domain.repository
 
 import com.most4dev.countriesapp.domain.entity.CountriesLong
-import com.most4dev.countriesapp.domain.entity.CountriesShort
 
 interface CountriesListRepository {
 
-    suspend fun getCountriesList(): List<CountriesShort>
+    suspend fun getCountriesList(): List<CountriesLong>
 
-    suspend fun getCountry(name: String): CountriesLong?
+    fun getCountry(name: String): CountriesLong?
 
 }
