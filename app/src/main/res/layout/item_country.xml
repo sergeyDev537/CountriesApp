@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+
     <data>
+
         <variable
             name="countryItem"
             type="com.most4dev.countriesapp.domain.entity.CountriesLong" />
     </data>
+
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -32,8 +35,8 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="0.1"
-                app:loadIcon="@{countryItem.flags.png}"
                 android:contentDescription="@string/cd_icon_country"
+                app:loadIcon="@{countryItem.flags.png}"
                 tools:src="@drawable/ic_launcher_foreground" />
 
             <TextView
@@ -44,12 +47,11 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="5"
-                android:textColor="@color/white"
                 android:text="@{countryItem.name}"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 tools:text="Country" />
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
 </layout>
